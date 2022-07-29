@@ -7,7 +7,7 @@ export const RegisterPage = () => {
   return (
     <AuthLayout title="Create account">
       <form>
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item xs={12}>
             <TextField
               label="Full Name"
@@ -22,6 +22,7 @@ export const RegisterPage = () => {
               type="email"
               placeholder="email@domain.com"
               fullWidth
+              sx={{ my: 2 }}
             />
           </Grid>
           <Grid item xs={12}>
