@@ -21,10 +21,11 @@ export const SideBar = ({ drawerWidth }) => {
       sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
     >
       <Drawer
+        // variant="temporary"
+        // open={false}
         variant="permanent"
-        open={true}
         // ModalProps={{
-        //   keepMounted: true, // Better open performance on mobile.
+        //   keepMounted: false, // Better open performance on mobile.
         // }}
         sx={{
           display: { xs: "block" },

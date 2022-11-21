@@ -2,7 +2,7 @@ import { Box, Toolbar } from "@mui/material";
 import { NavBar, SideBar } from "../components";
 
 export const JournalLayout = ({ children }) => {
-  const drawerWidth = 240;
+  const drawerWidth = 300;
 
   return (
     <Box sx={{ display: "flex" }}>
