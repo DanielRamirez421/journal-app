@@ -1,4 +1,5 @@
-import { checkCredentials, checkGoogleAuth } from "./authSlice";
+import { signInWithGoogle } from "../../firebase/poviders";
+import { checkCredentials, checkGoogleAuth, logout, login } from "./authSlice";
 
 export const checkAuth = (email, password) => async (dispatch) => {
   dispatch( checkCredentials() );
@@ -6,4 +7,12 @@ export const checkAuth = (email, password) => async (dispatch) => {
 
 export const startGoogleLogin = () => async (dispatch) => {
   dispatch( checkGoogleAuth() );
+  const result = await signInWithGoogle();
+
+  if (!result.ok) {
+    dispatch( logout( result ) );
+    return;
+  }
+
+  dispatch( login( result ) );
 }
