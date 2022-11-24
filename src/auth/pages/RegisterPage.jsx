@@ -36,9 +36,8 @@ export const RegisterPage = () => {
     e.preventDefault();
     setIsFormSubmited(true);
 
-    if (isFormValid) {
-      console.log('Form is valid');
-    }
+    if (!isFormValid) return;
+    console.log('Form is valid');
   };
 
   return (

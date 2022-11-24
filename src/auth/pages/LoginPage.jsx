@@ -9,7 +9,7 @@ import { authConstants } from "../constants/auth.constants";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../shared/hooks";
 import { checkAuth, startGoogleLogin } from "../store/authThunks";
-import { authSliceName, authStatusConstants, checkGoogleAuth } from "../store/authSlice";
+import { authSliceName, authStatusConstants } from "../store/authSlice";
 import { useMemo } from "react";
 
 const EMAIL = "email";

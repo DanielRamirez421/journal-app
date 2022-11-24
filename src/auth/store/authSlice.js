@@ -36,15 +36,11 @@ export const authSlice = createSlice({
       state.photoURL = null;
       state.errorMessage = payload.errorMessage;
     },
-    checkCredentials: (state, action) => {
+    checkingCredentials: (state, action) => {
       state.status = authStatusConstants.AUTHENTICATING;
     },
-    checkGoogleAuth: (state, action) => {
-      state.status = authStatusConstants.AUTHENTICATING;
-    },
-    setErrorMessage: (state, action) => {},
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { login, logout, checkCredentials, setErrorMessage, checkGoogleAuth } = authSlice.actions;
+export const { login, logout, checkingCredentials } = authSlice.actions;
