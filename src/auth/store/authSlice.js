@@ -8,7 +8,7 @@ export const authStatusConstants = {
 }
 
 const initialState = {
-  status: authStatusConstants.NOT_AUTHENTICATED,
+  status: authStatusConstants.AUTHENTICATING,
   uid: null,
   email: null,
   displayName: null,
