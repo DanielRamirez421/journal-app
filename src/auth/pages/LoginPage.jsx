@@ -7,7 +7,7 @@ import { routerConstants } from "../../core/constants/router.constants";
 import { authConstants } from "../constants/auth.constants";
 
 import { AuthLayout } from "../layout/AuthLayout";
-import { useForm } from "../../shared/hooks";
+import { useForm } from "../../hooks";
 import { startGoogleLogin, startLoginWithEmailPassword } from "../store/authThunks";
 import { authSliceName, authStatusConstants } from "../store/authSlice";
 import { useMemo, useState } from "react";
@@ -45,13 +45,17 @@ export const LoginPage = () => {
     
     const dispatch = useDispatch();
 
+
+
   const onSubmit = (e) => {
     e.preventDefault();
     setIsFormSubmited(true);
 
     if (!isFormValid) return;
-    dispatch( startLoginWithEmailPassword(email, password) );
+    dispatch( startLoginWithEmailPassword(email.toLowerCase(), password) );
   };
+
+
 
   const OnGoogleLogin = () => {
     dispatch( startGoogleLogin() );

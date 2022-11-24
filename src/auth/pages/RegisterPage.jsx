@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Grid, TextField, Link, Button,Typography, Alert } from "@mui/material";
 
 import { AuthLayout } from "../layout/AuthLayout";
-import { useForm } from "../../shared/hooks";
+import { useForm } from "../../hooks";
 import { authSliceName, authStatusConstants } from "../store/authSlice";
 import { startCreateUserUsingEmailAndPassword } from "../store/authThunks";
 
@@ -45,7 +45,7 @@ export const RegisterPage = () => {
     setIsFormSubmited(true);
 
     if (!isFormValid) return;
-    dispatch( startCreateUserUsingEmailAndPassword( email, password, displayedName ) );
+    dispatch( startCreateUserUsingEmailAndPassword( email.toLowerCase(), password, displayedName ) );
   };
 
   return (

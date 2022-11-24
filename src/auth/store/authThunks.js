@@ -1,4 +1,4 @@
-import { registerUserWithUsernameAndPassword, signInWithGoogle, signInWithUsernameAndPassword } from "../../firebase/poviders";
+import { registerUserWithUsernameAndPassword, signInWithGoogle, signInWithUsernameAndPassword } from "../../firebase/providers";
 import { checkingCredentials, logout, login } from "./authSlice";
 
 export const checkAuth = (email, password) => async (dispatch) => {
