@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
-import { Grid, TextField, Link, Button,Typography } from "@mui/material";
+import { Grid, TextField, Link, Button,Typography, Alert } from "@mui/material";
 
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../shared/hooks";
+import { authSliceName, authStatusConstants } from "../store/authSlice";
+import { startCreateUserUsingEmailAndPassword } from "../store/authThunks";
 
 const formData = {
   displayedName: '',
@@ -28,16 +31,21 @@ const formValidations = {
 
 export const RegisterPage = () => {
 
+  const { status, errorMessage } = useSelector(state => state[authSliceName]);
+  const isUserAuthenticating = useMemo(() => status === authStatusConstants.AUTHENTICATING, [status]);
+
   const [isFormSubmited, setIsFormSubmited] = useState(false);
   const { displayedName, email, password, onInputChange, isFormValid,
-          displayedNameValid, emailValid, passwordValid, formValidation } = useForm(formData, formValidations);
+          displayedNameValid, emailValid, passwordValid, formState } = useForm(formData, formValidations);
+
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
     setIsFormSubmited(true);
 
     if (!isFormValid) return;
-    console.log('Form is valid');
+    dispatch( startCreateUserUsingEmailAndPassword( email, password, displayedName ) );
   };
 
   return (
@@ -85,8 +93,15 @@ export const RegisterPage = () => {
             />
           </Grid>
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+            <Grid 
+              item 
+              xs={ 12 }
+              display={ !!errorMessage ? '': 'none' }>
+                <Alert severity='error'>{ errorMessage }</Alert>
+            </Grid>
             <Grid item xs={12}>
               <Button
+                disabled={isUserAuthenticating}
                 type="submit" 
                 variant="contained"
                 fullWidth>

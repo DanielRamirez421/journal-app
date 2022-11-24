@@ -24,7 +24,7 @@ export const authSlice = createSlice({
       state.status = authStatusConstants.AUTHENTICATED;
       state.uid = payload.uid;
       state.email = payload.email;
-      state.displayName = payload.displayName;
+      state.displayName = payload.displayedName;
       state.photoURL = payload.photoURL;
       state.errorMessage = null;
     },
@@ -38,6 +38,7 @@ export const authSlice = createSlice({
     },
     checkingCredentials: (state, action) => {
       state.status = authStatusConstants.AUTHENTICATING;
+      state.errorMessage = null;
     },
   },
 });
