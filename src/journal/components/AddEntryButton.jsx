@@ -1,7 +1,7 @@
 import { AddOutlined } from "@mui/icons-material"
 import { IconButton } from "@mui/material"
 
-export const AddEntryButton = () => {
+export const AddEntryButton = ({ onClickNewNote }) => {
   return (
     <IconButton
         size="large"
@@ -16,6 +16,7 @@ export const AddEntryButton = () => {
             opacity: 0.9,
           }
         }}
+        onClick={onClickNewNote}
       >
         <AddOutlined fontSize="30"/>
       </IconButton>
